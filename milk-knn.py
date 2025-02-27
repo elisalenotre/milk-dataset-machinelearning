@@ -15,8 +15,6 @@ y = train_data["Grade"]
 x = train_data[features] 
 
 X = pd.get_dummies(x, drop_first=True)  
-X["Odor"].fillna(X["Odor"].mean(), inplace=True)
-X["Fat"].fillna(X["Fat"].mean(), inplace=True)
 
 # Boucle d'entraînement du modèle
 for i in range(42):
@@ -28,5 +26,5 @@ for i in range(42):
     predictions = model.predict(X_test)
     accuracy = accuracy_score(y_test, predictions)
 
-    print(f"L'accuracy du modèle sur l'ensemble de test est de {accuracy * 100:.1f}%")
+    print(f"L'accuracy du modèle KNN sur l'ensemble de test est de {accuracy * 100:.1f}%")
     print("---------------------------------------------------------------------")

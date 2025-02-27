@@ -43,7 +43,7 @@ for i in range(1, 20, 1):
     predictions = model.predict(X_test)
     accuracy = accuracy_score(y_test, predictions)
 
-    print(f"L'accuracy du modèle sur l'ensemble de test est de {accuracy * 100:.1f}%")
+    print(f"L'accuracy du modèle Random Forest Classifier sur l'ensemble de test est de {accuracy * 100:.1f}%")
     print("---------------------------------------------------------------------")
 
 
