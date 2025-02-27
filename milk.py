@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Charger les données
-train_data = pd.read_csv("milknew_enriched.csv")
+train_data = pd.read_csv("./Datasets/milknew_enriched2.csv")
 
 #SCRIPTS D'ENRICHISSEMENT DU DATASET
 
@@ -28,10 +28,6 @@ y = train_data["Grade"]
 x = train_data[features] 
 
 X = pd.get_dummies(x, drop_first=True)  
-X["Taste"].fillna(X["Taste"].mean(), inplace=True)
-X["Colour"].fillna(X["Colour"].mean(), inplace=True)
-#X["Odor"].fillna(X["Odor"].mean(), inplace=True)
-#X["Turbidity"].fillna(X["Turbidity"].mean(), inplace=True)
 
 # Boucle d'entraînement du modèle
 for i in range(1, 20, 1):
