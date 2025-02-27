@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Charger les données
-train_data = pd.read_csv("Datasets/milknew_enriched2.csv")
+train_data = pd.read_csv("./Datasets/milknew_enriched2.csv")
 
 
 # # Ajouter une nouvelle colonne "CowRace" avec des valeurs aléatoires
@@ -36,7 +36,6 @@ y = train_data["Grade"]
 x = train_data[features] 
 
 X = pd.get_dummies(x, drop_first=True)  
-
 
 # Boucle d'entraînement du modèle
 for i in range(1, 20, 1):
