@@ -10,20 +10,28 @@ from sklearn.metrics import accuracy_score
 # Charger les données
 train_data = pd.read_csv("./Datasets/milknew_enriched2.csv")
 
-#SCRIPTS D'ENRICHISSEMENT DU DATASET
 
-# # Ajouter une nouvelle colonne "Race de vache" avec des valeurs aléatoires :
-#races = ["Holstein", "Jersey", "Normande", "Montbeliarde", "Charolaise"]
-#train_data["CowRace"] = np.random.choice(races, size=len(train_data))
-#train_data.to_csv("Datasets/old_versions/milknew_enriched.csv", index=False) #sauvegarde le nouveau csv
+# # Ajouter une nouvelle colonne "CowRace" avec des valeurs aléatoires
+# races = ["Holstein", "Jersey", "Normande", "Montbeliarde", "Charolaise"]
+# train_data["CowRace"] = np.random.choice(races, size=len(train_data)) #sélectionner aléatoirement des éléments de la liste racesx
+# train_data.to_csv("milknew_enriched.csv", index=False) #sauvegarde le nv csv
 
-# # script d'jout de "CowAgeBelowFive" : quand la vache a moins de 5 ans (donc 1), son lait est plus gras
-#train_data["CowAgeBelowFive"] = train_data["Fat"].apply(lambda x: 1 if x == 1 else 0)
-#train_data.to_csv("Datastets/milknew_enriched2.csv", index=False)
+# print("Le dataset a été enrichi et sauvegardé sous 'milknew_enriched.csv'.")
+
+
+# # Ajouter une nouvelle colonne "Age" avec des valeurs 
+# train_data["CowAgeBelowFive"] = train_data["Fat"].apply(lambda x: 1 if x == 1 else 0)
+# # Sauvegarder le fichier enrichi
+# train_data.to_csv("milknew_enriched2.csv", index=False)
+
+# print("Le dataset a été enrichi avec la colonne 'CowAgeBelowFive', puis sauvegardé sous 'milknew_enriched2.csv'.")
 
 
 # Définition des features et de la cible
-features = ["Taste","Colour"] #faire avec Fat et Colour pour moins d'accuracy
+# features = ["Temprature","Taste","pH","Fat","Turbidity","Colour"] #99.1%
+# features = ["Temprature","pH","Fat"] #91.3%
+# features = ["Odor","pH"] #89.4%*
+features = ["Turbidity","Fat"] #61.3%
 y = train_data["Grade"] 
 x = train_data[features] 
 
