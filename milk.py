@@ -1,11 +1,7 @@
 import pandas as pd
-import numpy as np
-
-import matplotlib as mpl
 import matplotlib.pyplot as plt
-
 import seaborn as sns
-import seaborn.objects as so
+import numpy as np
 
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
@@ -46,7 +42,7 @@ X["Fat"].fillna(X["Fat"].mean(), inplace=True)
 
 
 # Boucle d'entraînement du modèle
-for i in range(100, 130, 2):
+for i in range(1, 20, 1):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=i)
 
     model = RandomForestClassifier(n_estimators=120, max_depth=5, random_state=42)
@@ -55,9 +51,9 @@ for i in range(100, 130, 2):
     predictions = model.predict(X_test)
     accuracy = accuracy_score(y_test, predictions)
 
-    print(f"L'accuracy du modèle sur l'ensemble de test est de {accuracy * 100:.1f}%")
+    print(f"L'accuracy du modèle Random Forest Classifier sur l'ensemble de test est de {accuracy * 100:.1f}%")
     print("---------------------------------------------------------------------")
 
-# Affichage des données avec Seaborn
-sns.pairplot(train_data, hue="Fat")
+
+sns.pairplot(train_data, hue="Grade")
 plt.show()
