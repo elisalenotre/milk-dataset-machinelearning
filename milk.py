@@ -41,7 +41,7 @@ X = pd.get_dummies(x, drop_first=True)
 for i in range(1, 20, 1):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.4, random_state=i)
 
-    model = RandomForestClassifier(n_estimators=120, max_depth=5, random_state=42)
+    model = RandomForestClassifier(n_estimators=100, max_depth=5, random_state=42)
     model.fit(X_train, y_train)
 
     predictions = model.predict(X_test)
