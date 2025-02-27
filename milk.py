@@ -14,21 +14,36 @@ from sklearn.metrics import accuracy_score
 # Charger les données
 train_data = pd.read_csv("milknew_enriched.csv")
 
-# # Ajouter une nouvelle colonne "Race de vache" avec des valeurs aléatoires
+
+# # Ajouter une nouvelle colonne "CowRace" avec des valeurs aléatoires
 # races = ["Holstein", "Jersey", "Normande", "Montbeliarde", "Charolaise"]
-# train_data["CowRace"] = np.random.choice(races, size=len(train_data))
+# train_data["CowRace"] = np.random.choice(races, size=len(train_data)) #sélectionner aléatoirement des éléments de la liste racesx
 # train_data.to_csv("milknew_enriched.csv", index=False) #sauvegarde le nv csv
 
 # print("Le dataset a été enrichi et sauvegardé sous 'milknew_enriched.csv'.")
 
+
+# # Ajouter une nouvelle colonne "Age" avec des valeurs 
+# train_data["CowAgeBelowFive"] = train_data["Fat"].apply(lambda x: 1 if x == 1 else 0)
+# # Sauvegarder le fichier enrichi
+# train_data.to_csv("milknew_enriched2.csv", index=False)
+
+# print("Le dataset a été enrichi avec la colonne 'Age de la vache', puis sauvegardé sous 'milknew_enriched2.csv'.")
+
+
 # Définition des features et de la cible
-features = ["pH","Temprature","Taste","Odor","Fat","Turbidity","Colour","Grade"] 
+# features = ["Temprature","Taste","pH","Fat","Turbidity","Colour"] 99.1%
+# features = ["Temprature","pH","Fat"] 91.3%
+# features = ["Odor","pH"] 89.4%*
+features = ["Turbidity","Fat"] 
 y = train_data["Grade"] 
 x = train_data[features] 
 
 X = pd.get_dummies(x, drop_first=True)  
-X["Odor"].fillna(X["Odor"].mean(), inplace=True)
+X["Turbidity"].fillna(X["Turbidity"].mean(), inplace=True)
+# X["pH"].fillna(X["pH"].mean(), inplace=True)
 X["Fat"].fillna(X["Fat"].mean(), inplace=True)
+
 
 # Boucle d'entraînement du modèle
 for i in range(100, 130, 2):
