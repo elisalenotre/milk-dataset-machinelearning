@@ -2,7 +2,7 @@
 import pandas as pd
 
 
-train_data = pd.read_csv("./milknew.csv")
+train_data = pd.read_csv("Datasets/milknew_enriched2.csv")
 
 
 total_data = len(train_data)

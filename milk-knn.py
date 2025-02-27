@@ -7,7 +7,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Charger les données
-train_data = pd.read_csv("milknew_enriched.csv")
+train_data = pd.read_csv("Datasets/milknew_enriched2.csv")
 
 # Définition des features et de la cible
 features = ["pH","Temprature","Taste","Odor","Fat","Turbidity","Colour"] 
