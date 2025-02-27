@@ -8,7 +8,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 
 # Charger les données
-train_data = pd.read_csv("milknew_enriched.csv")
+train_data = pd.read_csv("Datasets/milknew_enriched2.csv")
 
 
 # # Ajouter une nouvelle colonne "CowRace" avec des valeurs aléatoires
@@ -24,21 +24,18 @@ train_data = pd.read_csv("milknew_enriched.csv")
 # # Sauvegarder le fichier enrichi
 # train_data.to_csv("milknew_enriched2.csv", index=False)
 
-# print("Le dataset a été enrichi avec la colonne 'Age de la vache', puis sauvegardé sous 'milknew_enriched2.csv'.")
+# print("Le dataset a été enrichi avec la colonne 'CowAgeBelowFive', puis sauvegardé sous 'milknew_enriched2.csv'.")
 
 
 # Définition des features et de la cible
-# features = ["Temprature","Taste","pH","Fat","Turbidity","Colour"] 99.1%
-# features = ["Temprature","pH","Fat"] 91.3%
-# features = ["Odor","pH"] 89.4%*
-features = ["Turbidity","Fat"] 
+# features = ["Temprature","Taste","pH","Fat","Turbidity","Colour"] #99.1%
+# features = ["Temprature","pH","Fat"] #91.3%
+# features = ["Odor","pH"] #89.4%*
+features = ["Turbidity","Fat"] #61.3%
 y = train_data["Grade"] 
 x = train_data[features] 
 
 X = pd.get_dummies(x, drop_first=True)  
-X["Turbidity"].fillna(X["Turbidity"].mean(), inplace=True)
-# X["pH"].fillna(X["pH"].mean(), inplace=True)
-X["Fat"].fillna(X["Fat"].mean(), inplace=True)
 
 
 # Boucle d'entraînement du modèle
