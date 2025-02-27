@@ -21,7 +21,6 @@ train_data = pd.read_csv("milknew_enriched.csv")
 
 # print("Le dataset a été enrichi et sauvegardé sous 'milknew_enriched.csv'.")
 
-
 # Définition des features et de la cible
 features = ["pH","Temprature","Taste","Odor","Fat","Turbidity","Colour","Grade"] 
 y = train_data["Grade"] 
